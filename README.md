@@ -2,15 +2,15 @@ Sketch-Resize
 =============
 A [Sketch 3](http://bohemiancoding.com/sketch/) plugin made to make every designers life a bit easier. 
 
-Dynamically change the width and height of one or more objects using the largest layer as a template. 
+Dynamically change the width and height of one or more objects using the largest layer as a template or select only one layer and scale the layer to fit the artboard.
 Think of it as the align tool but instead of change the position you'll change the width and height of your layers.
 
 ##Features
-* Change the height to fit another layer.
-* Use another layer as a template but you can set a size difference value the the height.
-* Change the width to fit another layer.
-* Use another layer as a template but you can set a size difference value the the width.
-* Change both the width and height. 
+* Change the height to fit another layer or the current artboard.
+* Use another layer or the current artboard as a template but you can set a size difference value the the height.
+* Change the width to fit another layer or the current artboard.
+* Use another layer or the current artboard as a template but you can set a size difference value the the width.
+* Change both the width and height at the same time. 
 * Once again add difference in the size.
 
 ##How to install it

@@ -25,7 +25,9 @@ First of all you need to have [Sketch 3](http://bohemiancoding.com/sketch/) inst
 
 ## How to use it
 
-Select at least two layers and use the shortcuts:
+To use the artboard as the template you have to select only one layer. Otherwise you need to select at least two layers. 
+
+**Shortcuts:**
 * `ctrl alt y` to set the height.
 * `ctrl alt shift y` to set the height with a size difference.
 * `ctrl alt x` to set the width.

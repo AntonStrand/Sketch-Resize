@@ -1,0 +1,5 @@
+// resize both horizontally and vertically (control alt b)
+
+#import 'resize.js'
+
+resize('both');

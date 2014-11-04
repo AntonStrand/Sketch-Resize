@@ -1,0 +1,12 @@
+// resize both horizontally (control alt shift y)
+
+#import 'resize.js'
+
+var title = 'Set vertical size difference';
+var msg   = 'Provide the size difference in pixels. You can both provide a positive or negative amount.';
+var label = 'Size difference in pixels';
+var defaultValue = 0;
+var difference = Number(alertForFeedback( title, msg, label, defaultValue));
+
+
+resize('vertical', difference);

@@ -1,0 +1,5 @@
+// resize both horizontally (control alt y)
+
+#import 'resize.js'
+
+resize('vertical');

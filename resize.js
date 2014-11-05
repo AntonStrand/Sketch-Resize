@@ -1,6 +1,7 @@
 var HORIZONTAL = 'horizontal';
-var VERTICAL  = 'vertical';
-var BOTH      = 'both';
+var VERTICAL   = 'vertical';
+var BOTH       = 'both';
+var YES_BUTTON = '1000';
 var dir;
 var padding;
 
@@ -13,28 +14,34 @@ function resize(direction, difference) {
 	padding = difference || 0;
 	var base;
 
-	if( selection.count() == 1) {
-		base = doc.currentPage().artboards().firstObject();
-	} else if( selection.count() == 0 ) {
+	if( selection.count() > 0 ) {
+		if( selection.count() == 1) {
+			base = doc.currentPage().artboards().firstObject();
+		} 
+
+		// Is there any layers with constrained proportions and want the user continue if it does?
+		if( checkForConstrainProportions() ) {
+			switch(dir){
+				case HORIZONTAL:
+					resizeHorizontal(base);
+					notify('The content have been resized horizontally');
+					break;
+
+				case VERTICAL:
+					resizeVertical(base);
+					notify('The content have been resized vertically');
+					break;
+
+				case BOTH:
+					reziseBoth(base);
+					notify('The content have been resized');
+					break;
+			}
+		}
+	}
+	else if( selection.count() == 0 ) {
 		alert('Not enough selected','You need to select at least one layer.');
-	}
-
-	switch(dir){
-		case HORIZONTAL:
-			resizeHorizontal(base);
-			notify('The content have been resized horizontally');
-			break;
-
-		case VERTICAL:
-			resizeVertical(base);
-			notify('The content have been resized vertically');
-			break;
-
-		case BOTH:
-			reziseBoth(base);
-			notify('The content have been resized');
-			break;
-	}
+	}	
 }
 
 
@@ -67,6 +74,7 @@ function reziseBoth(base) {
 	resizeHorizontal(baseLayer);
 	resizeVertical(baseLayer);
 }
+
 
 function getWidest() {
 
@@ -135,13 +143,56 @@ function getResizebleLayers(largest) {
 }
 
 
+function checkForConstrainProportions() {
+	var numConstrain = 0;
+	var continueScript = true;
+
+	for (var i = selection.count() - 1; i >= 0; i--) {
+		if(selection[i].constrainProportions()){
+			numConstrain++;
+		}
+	}
+
+	if( numConstrain >0 ) {
+		var numerus = (numConstrain == 1) ? 'layer has' : 'layers have';
+		var result = alert('Constrained Propotions', numConstrain + ' ' + numerus + ' constrained propotions. Do you want to continue anyway?',['Yes','No','Remove constraint']);
+		
+		log(result);
+
+		continueScript = (result == YES_BUTTON);
+
+		// The user clicked "Remove constraints"
+		if(result == '1002') {
+			removeConstrainProporions();
+			continueScript = true;
+		}
+	}
+
+	return continueScript;
+}
+
+function removeConstrainProporions() {
+	for (var i = selection.count() - 1; i >= 0; i--) {
+		if(selection[i].constrainProportions()){
+			selection[i].constrainProportions = false;
+		}
+	}
+}
+
 
 // Alert
-function alert(title, msg) {
+function alert(title, msg, buttons) {
 	var alert = COSAlertWindow.new();
 	alert.setMessageText(title);
 	alert.setInformativeText(msg);
-	alert.runModal();
+	if (buttons instanceof Array) {
+		var t;
+		for( t in buttons ){
+			alert.addButtonWithTitle( buttons[t] );
+		}
+	}
+    else alert.addButtonWithTitle(buttons || 'OK');
+	return alert.runModal();
 }
 
 function alertForFeedback(title, msg, label, defaultValue) {
@@ -152,8 +203,9 @@ function alertForFeedback(title, msg, label, defaultValue) {
     alert.addTextFieldWithValue(defaultValue);
     alert.addButtonWithTitle('OK');
     alert.addButtonWithTitle('Cancel');
-	alert.runModal();
-	return alert.viewAtIndex(1).stringValue();
+	var responseCode = alert.runModal();
+	var difference = Number(alert.viewAtIndex(1).stringValue());
+	return [responseCode, difference];
 }
 
 function notify(msg) {

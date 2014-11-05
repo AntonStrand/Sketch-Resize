@@ -6,7 +6,6 @@ var title = 'Set horizontal size difference';
 var msg   = 'Provide the size difference in pixels. You can both provide a positive or negative amount.';
 var label = 'Size difference in pixels';
 var defaultValue = 0;
-var difference = Number(alertForFeedback( title, msg, label, defaultValue));
+var response = alertForFeedback( title, msg, label, defaultValue );
 
-
-resize('horizontal', difference);
+if( response[0] == YES_BUTTON ) resize( HORIZONTAL, Number(response[1]) );

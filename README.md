@@ -18,7 +18,7 @@ Think of it as the align tool but instead of change the position you'll change t
 First of all you need to have [Sketch 3](http://bohemiancoding.com/sketch/) installed.
 
 ###Use Sketch Toolbox (recommended)
-Use [Sketch Toobox](http://sketchtoolbox.com/) to search for `Sketch Resize` and click install.
+Use [Sketch Toolbox](http://sketchtoolbox.com/) to search for `Sketch Resize` and click install.
 
 ###Install manually 
 

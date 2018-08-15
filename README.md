@@ -3,13 +3,13 @@ Sketch-Resize
 A [Sketch 3](http://bohemiancoding.com/sketch/) plugin made to make every designers life a bit easier. 
 
 Dynamically change the width and height of one or more objects using the largest layer as a template or select only one layer and scale the layer to fit the artboard.
-Think of it as the align tool but instead of change the position you'll change the width and height of your layers.
+Think of it as the align tool but instead of changing the position you'll change the width and height of your layers.
 
 ##Features
 * Change the height to fit another layer or the current artboard.
-* Use another layer or the current artboard as a template but you can set a size difference value the the height.
+* Use another layer or the current artboard as a template but you can set a size difference value for the height.
 * Change the width to fit another layer or the current artboard.
-* Use another layer or the current artboard as a template but you can set a size difference value the the width.
+* Use another layer or the current artboard as a template but you can set a size difference value for the width.
 * Change both the width and height at the same time. 
 * Once again add difference in the size.
 
@@ -23,7 +23,7 @@ Use [Sketch Toolbox](http://sketchtoolbox.com/) to search for `Sketch Resize` an
 ###Install manually 
 
 1. [Download the latest release](https://github.com/AntonStrand/Sketch-Resize/releases) and open it
-2. Navigate the Sketch menu bar to `Plugins ▸ Reveal Plugins Folder`
+2. Navigate to the Sketch menu bar to `Plugins ▸ Reveal Plugins Folder`
 3. Place the directory into the revealed plugins directory
 
 ## How to use it

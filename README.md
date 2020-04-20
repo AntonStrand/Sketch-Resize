@@ -20,7 +20,7 @@ Think of it as the align tool but instead of changing the position you'll change
 
 First of all you need to have [Sketch 3](http://bohemiancoding.com/sketch/) installed.
 
-###Use Sketch Toolbox (recommended)
+### Use Sketch Toolbox (recommended)
 Use [Sketch Toolbox](http://sketchtoolbox.com/) to search for `Sketch Resize` and click install.
 
 ### Install manually 
